@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;  /* Apply a sans-serif font to the entire page */
+    color: #333; /* Dark gray font color for readability */
+    background-color: #f4f4f4; /* Light background color */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 2. Style for the intro block (div#intro) */
+  #intro {
+    background-color: #ffebcd; /* Light peach background color */
+    padding: 40px;
+    text-align: center; /* Center the content */
+    font-family: 'Georgia', serif; /* Apply serif font for a classic feel */
+  }
+  
+  /* 3. Style for the bedroom options block (div#bedroom-options) */
+  #bedroom-options {
+    background-color: #fff8dc; /* Light cream background color */
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px; /* Rounded corners for soft edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow to the box */
+  }
+  
+  /* 4. Style for the kitchen options block (div#kitchen-options) */
+  #kitchen-options {
+    background-color: #add8e6; /* Light blue background color */
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow to the box */
+  }
+  
+  /* 5. Style for headings in each block (h1, h2) */
+  h1, h2 {
+    color: #4b0082; /* Indigo color for headings */
+  }
+  
+  /* 6. Style for paragraphs */
+  p {
+    font-size: 1.1em; /* Slightly larger text for better readability */
+    color: #555; /* Light gray color for paragraphs */
+    line-height: 1.6; /* Space between lines for easier reading */
+
+  }
+  iframe {
+    display: block;
+    margin: 0 auto; /* Center the iframe horizontally */
+    border: 2px solid #ddd; /* Add a light border around the iframe */
+    border-radius: 8px; /* Round the corners */
+  }

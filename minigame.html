@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 40px;
+      text-align: center;
+    }
+
+    #riddle-container {
+      background: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin-top: 15px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .wrong {
+      color: red;
+      font-weight: bold;
+    }
+
+    #answer-box, #result, #correct-answer, #next-button {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="riddle-container">
+    <h1>Riddle Generator</h1>
+    <p id="riddle"></p>
+
+    <div id="answer-box">
+      <input type="text" id="user-answer" placeholder="Your answer here">
+      <br>
+      <button onclick="checkAnswer()">Submit Answer</button>
+    </div>
+
+    <p id="result"></p>
+    <p id="correct-answer"></p>
+    <button id="next-button" onclick="showRiddle()">Try Another Riddle</button>
+  </div>
+
+  <script>
+    const riddles = [
+      {
+        question: "What has to be broken before you can use it?",
+        answer: "egg"
+      },
+      {
+        question: "I'm tall when I'm young, and I'm short when I'm old. What am I?",
+        answer: "candle"
+      },
+      {
+        question: "What month of the year has 28 days?",
+        answer: "all of them"
+      },
+      {
+        question: "What is full of holes but still holds water?",
+        answer: "sponge"
+      },
+      {
+        question: "What question can you never answer yes to?",
+        answer: "are you asleep"
+      }
+    ];
+
+    let currentRiddle = {};
+
+    function showRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      currentRiddle = riddles[randomIndex];
+
+      document.getElementById("riddle").textContent = currentRiddle.question;
+      document.getElementById("user-answer").value = '';
+      document.getElementById("result").style.display = 'none';
+      document.getElementById("correct-answer").style.display = 'none';
+      document.getElementById("next-button").style.display = 'none';
+      document.getElementById("answer-box").style.display = 'block';
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("user-answer").value.trim().toLowerCase();
+      const correctAnswer = currentRiddle.answer.toLowerCase();
+
+      const result = document.getElementById("result");
+      const correctAnswerDisplay = document.getElementById("correct-answer");
+      const nextButton = document.getElementById("next-button");
+
+      if (userAnswer === correctAnswer) {
+        result.textContent = "🎉 Correct! Loading a new riddle...";
+        result.className = "correct";
+        result.style.display = 'block';
+        correctAnswerDisplay.style.display = 'none';
+        nextButton.style.display = 'none';
+
+        setTimeout(showRiddle, 1500); // Show next riddle after short delay
+      } else {
+        result.textContent = "❌ Incorrect.";
+        result.className = "wrong";
+        result.style.display = 'block';
+
+        correctAnswerDisplay.textContent = `The correct answer was: "${currentRiddle.answer}"`;
+        correctAnswerDisplay.style.display = 'block';
+        nextButton.style.display = 'inline-block';
+        document.getElementById("answer-box").style.display = 'none';
+      }
+    }
+
+    // Show first riddle on load
+    window.onload = showRiddle;
+  </script>
+<a href="scratch.html">Go back to Paige's Dream house</a>
+</body>
+</html>
